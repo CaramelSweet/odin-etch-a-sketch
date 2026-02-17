@@ -1,5 +1,9 @@
-// Create grid function
-function createGrid (gridSize) {
+// Define variables for event listeners 
+const container = document.querySelector("#container");
+const button = document.querySelector("#gridSizeButton");
+
+// Create grid
+function createGrid(gridSize) {
     for (let i = 1; i <= gridSize * gridSize; i++) {
         const gridBox = document.createElement("div");
         const squareSize = 100 / gridSize + "%";
@@ -9,8 +13,8 @@ function createGrid (gridSize) {
     }
 }
 
-// Check if use input is valid
-function isValidInput (input) {
+// Check if user input is valid
+function isValidInput(input) {
     const num = Number(input)
 
     if (!Number.isInteger(num))  {
@@ -24,9 +28,18 @@ function isValidInput (input) {
     }
 }
 
-// Define variables for event listeners 
-const container = document.getElementById("container");
-const button = document.getElementById("gridSizeButton");
+// Prompt the user for input
+function promptUser(message) {
+    let input = prompt(message, "1-100");
+
+    if (input == null) return null;
+
+    if (isValidInput(input)) {
+        return input;
+    } else {
+        return promptUser("Invalid input, please enter a whole number between 1 and 100:");
+    }
+}
 
 // Change color on hover
 container.addEventListener("mouseover", (event) => {
@@ -35,20 +48,18 @@ container.addEventListener("mouseover", (event) => {
     }
 });
 
-// Default grid size
-createGrid(16);
-
 // Listen for button event
 button.addEventListener("click", () => {
-    container.replaceChildren();
-
-    let gridSize = prompt("Enter grid size bewteen 1 and 100:", 16);
-
-    if (isValidInput(gridSize)) {
-        createGrid(gridSize);
+    let input = promptUser("Enter a whole number between 1 and 100:");
+    if (input == null) {
+        return;
     } else {
-        createGrid(16);
+        container.replaceChildren();
+        createGrid(input);
     }
 });
+
+// Default grid size
+createGrid(16);
 
 

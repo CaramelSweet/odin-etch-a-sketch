@@ -1,28 +1,49 @@
 body {
-    background-color: #282C34;
+    background-color: #21252B;
     margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+}
+
+button {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    margin: 0 auto;
+    width: 960px;
+    background-color: #3B4048;
+    color: #EBEBEC;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    color: #ffffff;
+    background-color: #626772;
 }
 
 #container {
+    margin: 0 auto;
     width: 960px;
     height: 960px;
     display: flex;
     flex-wrap: wrap;
     border: 1px solid #3B4048;
-    width: 960px;
+    box-sizing: border-box;
+    background-color: #282C34;
+
 }
 
 .square {
-    background-color: #2C313C;
     border: 1px solid #3B4048;
-    flex: 0 0 auto;
     box-sizing: border-box;
     color: #ABB2BF;
+    transition: 0.2s;
 }
 
 .square.filled {
-    background-color: #ABB2BF;
+    background-color: #626772;
 }
